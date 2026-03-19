@@ -75,33 +75,6 @@ flowchart LR
     class A,B ai;
 ```
 
-### 2. User interaction flow
-
-This diagram focuses on the user journey across the main product surfaces.
-
-```mermaid
-%%{init: {'theme': 'base', 'themeVariables': { 'primaryColor': '#111827', 'primaryTextColor': '#F9FAFB', 'primaryBorderColor': '#F59E0B', 'lineColor': '#94A3B8', 'secondaryColor': '#1F2937', 'tertiaryColor': '#0F172A', 'fontSize': '15px'}}}%%
-flowchart TD
-    classDef input fill:#0F172A,stroke:#60A5FA,color:#F8FAFC,stroke-width:2px;
-    classDef process fill:#111827,stroke:#34D399,color:#F8FAFC,stroke-width:2px;
-    classDef decision fill:#111827,stroke:#F59E0B,color:#F8FAFC,stroke-width:2px;
-    classDef output fill:#111827,stroke:#C084FC,color:#F8FAFC,stroke-width:2px;
-
-    A[Open dashboard] --> B[Apply filters and inspect charts]
-    B --> C{Need deeper help?}
-    C -- Search --> D[Use job search and lookup]
-    C -- AI help --> E[Open AI chat panel]
-    C -- CV fit --> F[Use CV matcher]
-    D --> G[Review job-level results]
-    E --> G
-    F --> G
-
-    class A input;
-    class B,D,E,F process;
-    class C decision;
-    class G output;
-```
-
 ## Dashboard capabilities
 
 The frontend includes multiple analytics surfaces built around chart-driven exploration. Based on the current component structure, the dashboard supports views such as:
