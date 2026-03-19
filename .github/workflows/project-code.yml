@@ -21,29 +21,9 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: "20"
-          cache: "npm"
-          cache-dependency-path: job-analytics-frontend/package-lock.json
 
       - name: Install dependencies
-        working-directory: job-analytics-frontend
         run: npm ci
 
-      - name: Run formatter (auto-fix)
-        working-directory: job-analytics-frontend
-        run: |
-          npx eslint . --fix
-          npx prettier --write .
-
-      - name: Commit changes if needed
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-
-          git add -A
-          if git diff --cached --quiet; then
-            echo "No changes to commit."
-            exit 0
-          fi
-
-          git commit -m "chore: auto-format frontend code"
-          git push
+      - name: Build
+        run: npm run build
